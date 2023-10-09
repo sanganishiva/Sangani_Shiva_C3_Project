@@ -40,7 +40,16 @@ public class Restaurant {
         Item newItem = new Item(name,price);
         menu.add(newItem);
     }
-    
+
+    public int calculateOrderValue(List<String> items) {
+        int totalValue = 0;
+        Item item = null;
+        for(String itemSelected: items) {
+            item = findItemByName(itemSelected);
+            totalValue += item.getPriceOfItem();
+        }
+        return totalValue;
+    }
     public void removeFromMenu(String itemName) throws itemNotFoundException {
 
         Item itemToBeRemoved = findItemByName(itemName);
